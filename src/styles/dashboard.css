@@ -1,0 +1,51 @@
+/* dashboard.css */
+
+/* General card styling for dark mode */
+.dashboard-card {
+  @apply bg-gray-800 shadow-lg rounded-xl p-6 border border-gray-700 text-white;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Titles inside cards */
+.dashboard-title {
+  @apply text-2xl font-bold text-blue-400 mb-4;
+}
+
+.dashboard-subtitle {
+  @apply text-xl font-semibold text-gray-300 mb-2;
+}
+
+/* Sections for spacing */
+.dashboard-section {
+  @apply mt-6;
+}
+
+/* Loading text style */
+.loading-text {
+  @apply text-gray-500 italic;
+}
+
+
+/* For date picker icon contrast in dark mode */
+input[type='date']::-webkit-calendar-picker-indicator {
+  filter: invert(1); /* Inverts the color so it's visible on dark bg */
+}
+
+body {
+  @apply bg-gray-900 text-white;
+}
+
+header, .header {
+  @apply bg-gray-800 text-white shadow-md;
+}
+nav a {
+  @apply text-gray-300 hover:text-blue-400;
+}
+
+
+

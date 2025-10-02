@@ -15,9 +15,10 @@ function App() {
     console.log("Fetching data for:", { lat, lon, time });
     // Later: call backend API here
   };
+
   return (
     <Router>
-      <nav className="p-4 bg-blue-600 text-white flex justify-between">
+      <nav className="p-4 bg-gray-800  text-white flex justify-between">
         <div>
           <Link to="/" className="mr-4 hover:underline">Home</Link>
           <Link to="/dashboard" className="mr-4 hover:underline">Dashboard</Link>
@@ -41,11 +42,9 @@ function App() {
             />
           }
         />
-
-        </Routes>
+      </Routes>
     </Router>
   );
 }
 
 export default App;
-

@@ -1,12 +1,23 @@
-export default function TextExplanation() {
-  return (
-    <div className="bg-white p-4 rounded-lg shadow">    
-        <h2 className="text-xl font-semibold mb-2">Understanding Weather Probabilities</h2>
-        <p className="text-gray-700">
-            text explanation 
-        </p>
-        <h2 className="text-gray-700 mt-2">Trend</h2>
-        
-    </div>
-  );
+// TextExplanation.tsx
+import React from 'react';
+
+
+interface TextExplanationProps {
+title?: string;
+text?: string;
+trendTitle?: string;
 }
+
+
+const TextExplanation: React.FC<TextExplanationProps> = ({ title, text, trendTitle }) => {
+return (
+<div className="dashboard-card">
+{title && <h2 className="dashboard-title">{title}</h2>}
+{text && <p className="text-gray-700 mb-2">{text}</p>}
+{trendTitle && <h3 className="dashboard-subtitle">{trendTitle}</h3>}
+</div>
+);
+};
+
+
+export default TextExplanation;

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-100 text-center">
+    <div className="flex flex-col items-center justify-center h-screen bg-gray-900 text-white text-center">
       <h1 className="text-4xl font-bold mb-6">NASA Weather Probability Dashboard</h1>
       <p className="text-lg mb-6 max-w-xl">
         Explore Earth observation data from NASA and understand the likelihood of extreme
@@ -15,5 +15,6 @@ export default function Home() {
         Go to Dashboard
       </Link>
     </div>
+
   );
 }
