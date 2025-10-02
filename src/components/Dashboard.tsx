@@ -6,6 +6,7 @@ import DataTable from "./DataTable";
 import DownloadButton from "./DownloadButton";
 import TextExplanation from "./TextExplanation";
 import React, { Suspense } from "react";
+import { fetchProbabilities } from "../api";
 
 export default function DashboardPage() {
   const [lat, setLat] = useState<string>("");
@@ -28,16 +29,9 @@ export default function DashboardPage() {
   if (!lat || !lon || !time) return alert("Please provide latitude, longitude, and date.");
 
     setLoading(true);
-  const payload = { lat, lon, time };
-
+    
   try {
-    const response = await fetch(
-        "https://qk0ydp1cdl.execute-api.us-west-2.amazonaws.com/predict", 
-        {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
+    const response = await fetchProbabilities(parseFloat(lat), parseFloat(lon), time);
 
     const result = await response.json();
     
