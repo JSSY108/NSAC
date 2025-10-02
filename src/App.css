@@ -1,5 +1,4 @@
-/* Global dark mode */
-/* @import "./styles/Dashboard.css"; */
+
 body {
   background-color: #1f2937; /* Tailwind gray-900 */
   color: #ffffff;            /* White text */
