@@ -1,20 +1,16 @@
 import { useState } from "react";
+import MapView from "../components/MapView";
 import InputForm from "./InputForm";
 import ProbabilityCards from "./ProbabilityCards";
 import GraphView from "./GraphView";
 import DataTable from "./DataTable";
 import DownloadButton from "./DownloadButton";
 import TextExplanation from "./TextExplanation";
-import React, { Suspense } from "react";
-import { fetchProbabilities } from "../api";
 
 export default function DashboardPage() {
   const [lat, setLat] = useState<string>("");
   const [lon, setLon] = useState<string>("");
   const [time, setTime] = useState<string>("");
-
-  const MapView = React.lazy(() => import("../components/MapView"));
-
 
   const [processedData, setProcessedData] = useState<{
     probabilities: { [key: string]: number };
@@ -29,9 +25,16 @@ export default function DashboardPage() {
   if (!lat || !lon || !time) return alert("Please provide latitude, longitude, and date.");
 
     setLoading(true);
-    
+  const payload = { lat, lon, time };
+
   try {
-    const response = await fetchProbabilities(parseFloat(lat), parseFloat(lon), time);
+    const response = await fetch(
+        "https://qk0ydp1cdl.execute-api.us-west-2.amazonaws.com/predict", 
+        {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
 
     const result = await response.json();
     
@@ -62,9 +65,7 @@ export default function DashboardPage() {
 
       <div className="mt-6">
         <h2 className="text-xl font-semibold mb-2">Pick a Location on Map</h2>
-        <Suspense fallback={<div>Loading map...</div>}>
-          <MapView lat={lat} lon={lon} setLat={setLat} setLon={setLon} />
-        </Suspense>
+        <MapView lat={lat} lon={lon} setLat={setLat} setLon={setLon} />
       </div>
 
       
@@ -88,7 +89,7 @@ export default function DashboardPage() {
 
       <div className="mt-6">
         <TextExplanation />
-      </div>  
+      </div>
 
         <div className="mt-4">
           <DownloadButton />
