@@ -6,7 +6,7 @@ import GraphView from "./GraphView";
 import DataTable from "./DataTable";
 import DownloadButton from "./DownloadButton";
 import TextExplanation from "./TextExplanation";
-import "./styles/Dashboard.css";
+import "../styles/Dashboard.css";
 
 export default function DashboardPage() {
   const [lat, setLat] = useState<string>("");
